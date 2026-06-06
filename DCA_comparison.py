@@ -2,16 +2,24 @@ import yfinance as yf
 import pandas as pd
 
 
-# CONSTANTS
+# ---------------------------------
+# Variables to mess around with
+# ---------------------------------
+
 PERIOD = "10y" 
+TICKER = "SPMO"
+EDCA_THRESHOLD = -0.1
+EDCA_MULTIPLIER = 2.0
+
+# ================================================
 
 # download market data
 print("Downloading market data...")
-spmo = yf.download("SPMO", period=PERIOD)["Close"].squeeze()
+stock_data = yf.download(TICKER, period=PERIOD)["Close"].squeeze()
 
 # load spmo into dataframe
 df = pd.DataFrame({
-    'Price': spmo
+    'Price': stock_data
 }).dropna()
 print(f"Data downloaded! We have {len(df)} trading days.")
 
@@ -64,8 +72,8 @@ for row in df.itertuples():
         reg_cash -= reg_income 
 
         # 3. Enhanced DCA execution 
-        if deviation < -0.10:
-            target_spend = edca_spend * 2.0 
+        if deviation < EDCA_THRESHOLD:
+            target_spend = edca_spend * EDCA_MULTIPLIER
         else:
             target_spend = edca_spend
 
