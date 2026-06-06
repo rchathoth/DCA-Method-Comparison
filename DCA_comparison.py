@@ -64,7 +64,7 @@ for row in df.itertuples():
         reg_cash -= reg_income 
 
         # 3. Enhanced DCA execution 
-        if deviation < 0:
+        if deviation < -0.10:
             target_spend = edca_spend * 2.0 
         else:
             target_spend = edca_spend
