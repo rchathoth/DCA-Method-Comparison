@@ -37,4 +37,4 @@ This occurs due to **Cash Drag**. Because the Enhanced strategy holds cash on th
 ### Prerequisites
 Make sure you have the required packages installed:
 ```bash
-pip install yfinance pandas numpy
+pip install yfinance pandas
