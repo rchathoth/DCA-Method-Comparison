@@ -1,6 +1,6 @@
 import yfinance as yf
 import pandas as pd
-import numpy as np
+
 
 # CONSTANTS
 PERIOD = "10y" 
